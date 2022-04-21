@@ -1,0 +1,61 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NetMauiZIndex.MainPage"
+             xmlns:local="clr-namespace:NetMauiZIndex"    
+             BackgroundColor="{DynamicResource SecondaryColor}">
+
+    <ContentPage.Resources>
+        <Style x:Key="labelStyle" TargetType="{x:Type Label}">
+            <Setter Property="WidthRequest" Value="150"/>
+            <Setter Property="HeightRequest" Value="150"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="FontSize" Value="Medium"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="VerticalTextAlignment" Value="Center"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        </Style>
+
+        <Style x:Key="labelTextStyle" TargetType="{x:Type Label}">
+            <Setter Property="HorizontalOptions" Value="Start"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="FontSize" Value="Title"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="TextColor" Value="Black"/>
+            <Setter Property="VerticalTextAlignment" Value="Center"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        </Style>
+    </ContentPage.Resources>
+
+    <ContentPage.BindingContext>
+        <local:ViewModel/>
+    </ContentPage.BindingContext>
+
+    <StackLayout Orientation="{OnPlatform Default=Horizontal, Android=Vertical, iOS=Vertical}" VerticalOptions="CenterAndExpand"  HorizontalOptions="CenterAndExpand">
+        <StackLayout>
+            <Grid>
+                <Label x:Name="view1" Text="View 1" ZIndex="4" Margin="10,0,0,0" BackgroundColor="Green" Style="{StaticResource labelStyle}" >
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BringToFront}" CommandParameter="{Binding Source={x:Reference view1}}"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label x:Name="view2" Text="View 2" ZIndex="3" Margin="30,30,0,0" BackgroundColor="Navy" Style="{StaticResource labelStyle}">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BringToFront}" CommandParameter="{Binding Source={x:Reference view2}}"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label x:Name="view3" Text="View 3" ZIndex="2" Margin="60,60,0,0" BackgroundColor="Yellow" Style="{StaticResource labelStyle}">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BringToFront}" CommandParameter="{Binding Source={x:Reference view3}}"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label x:Name="view4" Text="View 4" ZIndex="1" Margin="90,90,0,0" BackgroundColor="SkyBlue" Style="{StaticResource labelStyle}">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BringToFront}" CommandParameter="{Binding Source={x:Reference view4}}"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </Grid>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>
